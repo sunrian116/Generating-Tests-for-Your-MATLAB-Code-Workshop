@@ -37,37 +37,37 @@ classdef testSimpleSort < matlab.unittest.TestCase
         % local functions at the bottom of the class to make it pass. %                    %
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        % function testSimpleSort_PropertyBasedTest(testCase, inputValue)
-        %     % Create a property-based test for simpleSort
-        % 
-        %     % Another way to test a code is by identifying "properties"
-        %     % (i.e., characteristics) of the results it produces that stay
-        %     % the same no matter what the input is. Once these properties
-        %     % are identified, you can write tests that check these
-        %     % properties against many different test inputs. Being able to
-        %     % run tests against many different inputs (even randomly
-        %     % generated inputs) can sometimes help you discover bugs and
-        %     % edge cases that you might have missed with a smaller sample
-        %     % of test inputs.
-        % 
-        %     % For simpleSort, the properties of the algorithm are:
-        %     %   - Output is sorted in ascending order
-        %     %   - Output has the same number of elements as the input
-        % 
-        % 
-        %     % Exercise function
-        %     result = simpleSort(inputValue);
-        % 
-        % 
-        %     % Check each property of the result
-        %     isSortedAscending = checkIsSortedAscending(result);
-        %     hasSameNumberOfElements = checkHasSameNumberOfElements(result,inputValue);
-        % 
-        % 
-        %     % Verify properties of actualOutput are satisfied
-        %     testCase.verifyTrue(isSortedAscending);
-        %     testCase.verifyTrue(hasSameNumberOfElements);
-        % end
+        function testSimpleSort_PropertyBasedTest(testCase, inputValue)
+            % Create a property-based test for simpleSort
+
+            % Another way to test a code is by identifying "properties"
+            % (i.e., characteristics) of the results it produces that stay
+            % the same no matter what the input is. Once these properties
+            % are identified, you can write tests that check these
+            % properties against many different test inputs. Being able to
+            % run tests against many different inputs (even randomly
+            % generated inputs) can sometimes help you discover bugs and
+            % edge cases that you might have missed with a smaller sample
+            % of test inputs.
+
+            % For simpleSort, the properties of the algorithm are:
+            %   - Output is sorted in ascending order
+            %   - Output has the same number of elements as the input
+
+
+            % Exercise function
+            result = simpleSort(inputValue);
+
+
+            % Check each property of the result
+            isSortedAscending = checkIsSortedAscending(result);
+            hasSameNumberOfElements = checkHasSameNumberOfElements(result,inputValue);
+
+
+            % Verify properties of actualOutput are satisfied
+            testCase.verifyTrue(isSortedAscending);
+            testCase.verifyTrue(hasSameNumberOfElements);
+        end
 
     end
 end
@@ -77,8 +77,15 @@ function isSortedAscending = checkIsSortedAscending(result)
 %           Note: isSortedAscending should be a logical true/false
 
 % ADD CODE HERE
+    n = length(result);
 
-
+    for i = 1:n-1        
+        if result(i) > result(i+1)
+            isSortedAscending = false;
+            return;
+        end    
+    end
+    isSortedAscending = true;
 end
 
 function hasSameNumberOfElements = checkHasSameNumberOfElements(result,inputValue)
@@ -87,6 +94,13 @@ function hasSameNumberOfElements = checkHasSameNumberOfElements(result,inputValu
 %           Note: hasSameNumberOfElements should be a logical true/false
 
 % ADD CODE HERE
+    a = length(inputValue);
+    b = length(result);
 
+    if a == b
+        hasSameNumberOfElements = true;
+    else
+        hasSameNumberOfElements = false;
+    end
 
 end
